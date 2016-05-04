@@ -1,7 +1,7 @@
 /**
  * Created by furka on 04.05.2016.
  */
-public enum TuringCharr {
+public enum TuringChar {
     SPACE('_');
 
     public char asChar() {
@@ -15,7 +15,7 @@ public enum TuringCharr {
 
     private final char c;
 
-    private TuringCharr(char c) {
+    private TuringChar(char c) {
         this.c = c;
     }
 }
