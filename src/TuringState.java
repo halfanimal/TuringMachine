@@ -4,12 +4,13 @@
 public class TuringState {
     private static int stateCount = 0;
 
-    // TODO: Instead of a number, make a name, which is unique in a Definition
     private Integer number;
+    private String name;
     private Boolean isTerminal;
 
-    public TuringState(boolean isTerminal) {
+    public TuringState(String name, boolean isTerminal) {
         number = stateCount++;
+        this.name = name;
         this.isTerminal = isTerminal;
     }
 
@@ -21,10 +22,9 @@ public class TuringState {
         return number;
     }
 
-    // TODO: Is this the best way to make a equals implementation for custom class?
     @Override
     public int hashCode() {
-        return number.hashCode() + isTerminal.hashCode();
+        return number.hashCode() + name.hashCode() + isTerminal.hashCode();
     }
 
     @Override
@@ -35,11 +35,11 @@ public class TuringState {
         if (obj == this) { return true; }
 
         TuringState ts = (TuringState) obj;
-        return ts.number.equals(number) && ts.isTerminal.equals(isTerminal);
+        return ts.number.equals(number) && ts.name.equals(name) && ts.isTerminal.equals(isTerminal);
     }
 
     @Override
     public String toString(){
-        return String.valueOf(number);
+        return name;
     }
 }

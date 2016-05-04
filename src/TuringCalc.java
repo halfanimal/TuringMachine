@@ -34,8 +34,7 @@ public class TuringCalc {
         return movement;
     }
 
-    // TODO: Add toString method and print calc with strip (upgrade: e.g. q0'0' --> '1'q2)
-    @Override
+        @Override
     public String toString() {
         return state + "'" + toRead + "'" + " --> " + "'" + toWrite + "'" + nextState;
     }

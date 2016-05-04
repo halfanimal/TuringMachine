@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -37,7 +38,7 @@ public class TuringStrip {
      * @return
      */
     private char getCharAt(int pos) {
-        char c = strip.get(pos) != null ? strip.get(pos) : '_'; // TODO: Make enum for fix chars like '_' <-- space on strip
+        char c = strip.get(pos) != null ? strip.get(pos) : TuringChar.SPACE.asChar();
         return c;
     }
 
@@ -65,6 +66,18 @@ public class TuringStrip {
      */
     public void moveTo(boolean direction) {
         pos = direction ? pos + 1 : pos - 1;
+    }
+
+    public String getString() {
+        String s = "";
+        int stripMin = Collections.min(strip.keySet());
+        int stripMax = Collections.max(strip.keySet());
+
+        for(int i = stripMin; i <= stripMax; i++) {
+            s = s + String.valueOf(getCharAt(i));
+        }
+
+        return s;
     }
 
     @Override

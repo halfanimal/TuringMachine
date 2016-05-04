@@ -56,14 +56,14 @@ public class App {
 
 
         // Multiplikation
-        TuringState q0 = new TuringState(false);
-        TuringState q1 = new TuringState(false);
-        TuringState q2 = new TuringState(false);
-        TuringState q3 = new TuringState(false);
-        TuringState q4 = new TuringState(false);
-        TuringState q5 = new TuringState(false);
-        TuringState q6 = new TuringState(false);
-        TuringState q7 = new TuringState(true);
+        TuringState q0 = new TuringState("q0", false);
+        TuringState q1 = new TuringState("q1", false);
+        TuringState q2 = new TuringState("q2", false);
+        TuringState q3 = new TuringState("q3", false);
+        TuringState q4 = new TuringState("q4", false);
+        TuringState q5 = new TuringState("q5", false);
+        TuringState q6 = new TuringState("q6", false);
+        TuringState q7 = new TuringState("q7", true);
 
         TuringDefinition tDefMult = new TuringDefinition();
         tDefMult.add(new TuringCalc(q0, '0', 'X', q1, true));
@@ -90,7 +90,7 @@ public class App {
 
         tDefMult.add(new TuringCalc(q7, '0', 'X', q1, true));
 
-        TuringMachine tm = new TuringMachine(tDefMult, "0000Y000", q0);
+        TuringMachine tm = new TuringMachine(tDefMult, "0000000", q0);
         tm.silentModeOff();
         tm.run();
     }

@@ -23,8 +23,10 @@ public class TuringMachine {
     }
 
     public void run() {
+        TuringCalc prevCalc = null;
+
         try {
-            while(currentCalc != null && (!currentCalc.getState().isTerminal() || !(strip.read() == '_'))) {
+            while(currentCalc != null && (!currentCalc.getState().isTerminal() || !(strip.read() == TuringChar.SPACE.asChar()))) {
                 ++stepCount;
 
                 // Print strip, only if not in silent mode
@@ -37,12 +39,15 @@ public class TuringMachine {
                 // Move strip (false: left, true: right)
                 strip.moveTo(currentCalc.getMovement());
 
+                // Set previous calc, for printing result
+                prevCalc = currentCalc;
+
                 // Get next calc
                 currentCalc = tDef.getTuringCalc(currentCalc.getNextState(), strip.read());
             }
 
             // Print input word if accepted.
-            //printResult();
+            printResult(!(prevCalc == null) && prevCalc.getState().isTerminal());
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -54,19 +59,20 @@ public class TuringMachine {
         System.out.println(strip);
     }
 
-    /*
-    private void printResult() {
+    private void printResult(boolean accepted) {
         String r = "Input word: \"" + inputWord + "\" ";
 
-        if(currentState.isTerminal()) {
-            r = r + "accepted. \n";
-            r = r + getResultFromStrip();
+
+        if(accepted) {
+            r = r + "accepted.\n" +
+                    "Result on strip: ";
+            r = r + strip.getString();
         } else {
             r = r + "not accepted.";
         }
+
         System.out.println(r);
     }
-    */
 
     public boolean silentModeOn() {
         if(!isSilentMode)
