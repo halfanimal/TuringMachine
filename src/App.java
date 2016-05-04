@@ -90,7 +90,7 @@ public class App {
 
         tDefMult.add(new TuringCalc(q7, '0', 'X', q1, true));
 
-        TuringMachine tm = new TuringMachine(tDefMult, "0000000", q0);
+        TuringMachine tm = new TuringMachine(tDefMult, "0000Y000", q0);
         tm.silentModeOff();
         tm.run();
     }

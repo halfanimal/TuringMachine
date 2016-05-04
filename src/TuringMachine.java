@@ -47,7 +47,7 @@ public class TuringMachine {
             }
 
             // Print input word if accepted.
-            printResult(!(prevCalc == null) && prevCalc.getState().isTerminal());
+            printResult(!(prevCalc == null) && prevCalc.getNextState().isTerminal());
 
         } catch(Exception e) {
             e.printStackTrace();
