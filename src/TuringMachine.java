@@ -62,17 +62,18 @@ public class TuringMachine {
     }
 
     private void printResult(boolean accepted, long duration) {
-        String r = "Input word:\"" + inputWord + "\" ";
+        String r = "Input word:\t\t\t\"" + inputWord + "\" ";
 
         if(accepted) {
             r = r + "accepted.\n" +
-                    "Result on strip: ";
+                    "Result on strip:\t";
             r = r + strip.getString();
         } else {
             r = r + "not accepted.";
         }
 
-        r = r + "\nElapsed time: " + (duration / 1000000000.0) + "s";
+        r = r + "\nElapsed time:\t\t" + (int)(duration * 0.000001) + " ms";
+        r = r + "\nTotal steps:\t\t" + stepCount;
 
         System.out.println(r);
     }
