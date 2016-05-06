@@ -5,7 +5,7 @@ import java.util.HashMap;
  * Created by furka on 02.05.2016.
  */
 public class TuringStrip {
-    private int STRIP_OFFSET = 20;
+    private int STRIP_OFFSET = 15;
 
     private HashMap<Integer, Character> strip;
     private int pos;
