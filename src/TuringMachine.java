@@ -24,6 +24,7 @@ public class TuringMachine {
 
     public void run() {
         TuringCalc prevCalc = null;
+        long duration = System.nanoTime();
 
         try {
             while(currentCalc != null && (!currentCalc.getState().isTerminal() || !(strip.read() == TuringChar.SPACE.asChar()))) {
@@ -45,9 +46,10 @@ public class TuringMachine {
                 // Get next calc
                 currentCalc = tDef.getTuringCalc(currentCalc.getNextState(), strip.read());
             }
+            duration = System.nanoTime() - duration;
 
             // Print input word if accepted.
-            printResult(!(prevCalc == null) && prevCalc.getNextState().isTerminal());
+            printResult(!(prevCalc == null) && prevCalc.getNextState().isTerminal(), duration);
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -59,9 +61,8 @@ public class TuringMachine {
         System.out.println(strip);
     }
 
-    private void printResult(boolean accepted) {
-        String r = "Input word: \"" + inputWord + "\" ";
-
+    private void printResult(boolean accepted, long duration) {
+        String r = "Input word:\"" + inputWord + "\" ";
 
         if(accepted) {
             r = r + "accepted.\n" +
@@ -70,6 +71,8 @@ public class TuringMachine {
         } else {
             r = r + "not accepted.";
         }
+
+        r = r + "\nElapsed time: " + (duration / 1000000000.0) + "s";
 
         System.out.println(r);
     }

@@ -67,6 +67,7 @@ public class App {
 
         TuringDefinition tDefMult = new TuringDefinition();
         tDefMult.add(new TuringCalc(q0, '0', 'X', q1, true));
+        tDefMult.add(new TuringCalc(q0, '_', '_', q7, true));
 
         tDefMult.add(new TuringCalc(q1, '0', '0', q1, true));
         tDefMult.add(new TuringCalc(q1, 'Y', 'Y', q0, true));
@@ -90,7 +91,7 @@ public class App {
 
         tDefMult.add(new TuringCalc(q7, '0', 'X', q1, true));
 
-        TuringMachine tm = new TuringMachine(tDefMult, "000Y00", q0);
+        TuringMachine tm = new TuringMachine(tDefMult, "000Y_", q0);
         tm.silentModeOff();
         tm.run();
     }
